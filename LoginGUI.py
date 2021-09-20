@@ -41,18 +41,20 @@ class MainWindow(wx.Frame):
         font.PointSize += 24
         signlineText.SetFont(font)
 
-        emailText = wx.StaticText(pnl,pos = (120,120), label="Email")
+        emailText = wx.StaticText(pnl,pos = (120,110), label="Email")
         font = emailText.GetFont()
         font.PointSize += 10
         emailText.SetFont(font)
 
+        email = wx.TextCtrl(pnl, pos = (120,140), size = (475,30))
         #textbox pos should be 120.140
 
-        passText = wx.StaticText(pnl,pos = (120,180), label="Password")
+        passText = wx.StaticText(pnl,pos = (120,170), label="Password")
         font = passText.GetFont()
         font.PointSize += 10
         passText.SetFont(font)
 
+        password = wx.TextCtrl(pnl, pos=(120, 200), size = (475,30))
         # textbox pos should be 120.200
 
         signinButton = wx.Button(pnl, pos=(320, 240), label="SIGN IN")
@@ -67,37 +69,10 @@ class MainWindow(wx.Frame):
         font.PointSize += 1
         altText.SetFont(font)
 
-        googleButton = wx.Button(pnl, pos=(200, 320), label="Google")
-        yahooButton = wx.Button(pnl, pos=(410, 320), label="Yahoo")
+        googleButton = wx.Button(pnl, pos=(150, 320), label="Google", size = (200,50))
+        yahooButton = wx.Button(pnl, pos=(370, 320), label="Yahoo", size = (200,50))
 
 app = wx.App(False)
 frame = MainWindow(None, "VAA Tool")
 app.MainLoop()
 
-
-
-# Setting up the menu.
-#   filemenu = wx.Menu()  # wx.ID_ABOUT and wx.ID_EXIT are standard IDs provided by wxWidgets.
-#   filemenu.Append(wx.ID_ABOUT, "&About", " Information about this program")
-#   filemenu.AppendSeparator()
-#   filemenu.Append(wx.ID_EXIT, "E&xit", " Terminate the program")
-#   # Creating the menubar.
-#   menuBar = wx.MenuBar()
-#   menuBar.Append(filemenu, "&File")  # Adding the "filemenu" to the MenuBar
-#   self.SetMenuBar(menuBar)  # Adding the MenuBar to the Frame content.
-#   self.Show(True)
-
-# def OnButtonClick(self, event):
-#         # if (some_condition):
-#         #     do_something()
-#         # else:
-#     event.Skip()
-#     # A button
-#     self.button = wx.Button(self, label="Save", pos=(200, 325))
-#     self.Bind(wx.EVT_BUTTON, self.OnButtonClick, self.button)
-#     wx.Button(self, -1, "Button")
-#     self.SetBackgroundColour("blue")
-
-# app = wx.App(False) # Next, create an application object.
-# # frm = wx.Frame(None, wx.ID_ANY, title="VAA Tool") # Then a frame.
-# frm.Show() # Show it.
