@@ -40,6 +40,7 @@ def acc_type(start_date, end_date,keyword):
 acc_type('1/7/2017','1/7/2019',"pedes")
 
 
+
 # In[8]:
 
 
