@@ -1,14 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[7]:
-
-
-import csv
-import os
-import datetime
-import time
-
 FILE_DIR = os.path.dirname(os.path.realpath(CrashStatisticsVictoria.csv))
 
 
