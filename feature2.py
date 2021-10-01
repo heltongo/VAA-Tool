@@ -47,6 +47,7 @@ class CanvasPanel(wx.Panel):
         plt.show()
         
 
+
 if __name__ == "__main__":
     app = wx.PySimpleApp()
     fr = wx.Frame(None, title='test')
