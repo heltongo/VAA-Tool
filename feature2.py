@@ -5,7 +5,7 @@ from matplotlib.backends.backend_wxagg import FigureCanvasWxAgg as FigureCanvas
 from matplotlib.backends.backend_wx import NavigationToolbar2Wx
 from matplotlib.figure import Figure
 import wx
-
+import sys
 
 
 import sqlite3
@@ -45,6 +45,7 @@ class CanvasPanel(wx.Panel):
         plt.title('Hourly Analysis of Accidents')
         plt.plot(list1, list2)
         plt.show()
+        
 
 if __name__ == "__main__":
     app = wx.PySimpleApp()
