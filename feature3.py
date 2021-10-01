@@ -15,6 +15,7 @@ def keyword_Selection(var1, var2, var3):
     cursor.execute(string1)
     result1 = cursor.fetchall()
 
+
     for r in result1:
         list_column.append(r[1])
 
