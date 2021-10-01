@@ -65,36 +65,6 @@ class MainWindow(wx.Frame):
         val2 = self.dateToText.GetValue()
         print(val1)
 
-        # dateFromText = wx.StaticText(pnl, pos=(280, 110), label="Date From:")
-        # font = dateFromText.GetFont()
-        # font.PointSize += 10
-        # dateFromText.SetFont(font)
-        #
-        # dateFrom = wx.TextCtrl(pnl, pos=(400, 110), size=(105, 30))
-        #
-        #
-        # dateToText = wx.StaticText(pnl, pos=(280, 80), label="Date To:")
-        # font = dateToText.GetFont()
-        # font.PointSize += 10
-        # dateToText.SetFont(font)
-        #
-        # dateTo = wx.TextCtrl(pnl, pos=(400, 80), size=(105, 30))
-
-        # submitButton = wx.Button(pnl, pos=(400, 300), label="Submit")
-        # submitButton.Bind(wx.EVT_BUTTON, pnl.OnSend)
-
-
-
-
-    # def onResize(self, event):
-    #     # self.Layout()
-    #     frame_size = self.GetSize()
-    #     frame_h = (frame_size[0]-10) / 2
-    #     frame_w = (frame_size[1]-10) / 2
-    #     png = self.png.Scale(frame_h,frame_w)
-    #     self.m_bitmap3.SetBitmap(wx.BitmapFromImage(png))
-    #     self.Refresh()
-    #     self.Layout()
 
 app = wx.App(False)
 frame = MainWindow(None, "VAA Tool")
