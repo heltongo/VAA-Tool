@@ -1,8 +1,6 @@
 import csv
 import os
-import datetime
 import sqlite3
-import time
 
 FILE_DIR = os.path.dirname(os.path.realpath(__file__))
 FILE_NAME = "CrashStatisticsVictoria.csv"
@@ -157,4 +155,4 @@ def create_output_file(error=False, msg='', results={}):
 
 if __name__ == '__main__':
     calculate_period('1/7/2013', '1/7/2013')
-    calculate_hour_day_crash
+
