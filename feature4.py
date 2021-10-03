@@ -36,7 +36,7 @@ def alcohol_Analysis():
     print("First record date: ",result[0].get('ACCIDENT_DATE'))
     print("Last record date: ",result[24530].get('ACCIDENT_DATE'))
 
-#Finally  :D
+#Finally :D
 
 
 # STOP
