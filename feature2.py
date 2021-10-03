@@ -10,7 +10,7 @@ import sys
 
 import sqlite3
 import matplotlib.pyplot as plt
-connection = sqlite3.connect("crashdb.db")
+connection = sqlite3.connect("data/crashdb.db")
 cursor = connection.cursor()
 string = "SELECT cast(ACCIDENT_TIME as int) AS 'HOUR',COUNT(*) AS 'COUNT' FROM CrashStatisticsVictoria GROUP BY HOUR"
     # string="SELECT sum(cast(price as INT)) from listings_dec18 "

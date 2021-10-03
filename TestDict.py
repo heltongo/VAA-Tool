@@ -7,7 +7,7 @@ FILE_NAME = "CrashStatisticsVictoria.csv"
 
 
 def read_fom_db():
-    connection = sqlite3.connect('crashdb.db')  # Connect to the database
+    connection = sqlite3.connect('data/crashdb.db')  # Connect to the database
 
     cursor = connection.cursor()
 
@@ -108,7 +108,7 @@ def calculate_alcohol(lower_date: str, higher_date: str):
             "road_type": data['gender'],
         }
 
-
+'''
 def create_output_file(error=False, msg='', results={}):
     """
         Function to create a output log
@@ -151,7 +151,7 @@ def create_output_file(error=False, msg='', results={}):
             output_writer.writerow(
                 ['', '', '', '', '', '', error, msg]
             )
-
+'''
 
 if __name__ == '__main__':
     calculate_period('1/7/2013', '1/7/2013')

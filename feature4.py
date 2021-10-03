@@ -8,7 +8,7 @@ def alcohol_Analysis():
                 WHERE ACCIDENT_DATE BETWEEN '2014-01-01' AND '2018-12-31' AND ALCOHOLTIME='Yes'\
                 ORDER BY ACCIDENT_DATE, ACCIDENT_TIME"
 
-    result = sql_data_to_list_of_dicts("Crashdb.db",QUERY)
+    result = sql_data_to_list_of_dicts("data/crashdb.db", QUERY)
 
     print(result)
 

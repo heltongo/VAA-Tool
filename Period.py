@@ -3,7 +3,7 @@ from datetime import datetime
 
 
 def period(lower_date, higher_date):
-    connection = sqlite3.connect('crashdb.db')  # Connect to the database
+    connection = sqlite3.connect('data/crashdb.db')  # Connect to the database
 
     cursor = connection.cursor()
 
@@ -22,7 +22,7 @@ def period(lower_date, higher_date):
 
 
 def accident_per_hour():
-    connection = sqlite3.connect('crashdb.db')  # Connect to the database
+    connection = sqlite3.connect('data/crashdb.db')  # Connect to the database
 
     cursor = connection.cursor()
 
@@ -38,4 +38,4 @@ def accident_per_hour():
 
 if __name__ == '__main__':
     accident_per_hour()
-    period(lower_date='1/7/2013', higher_date='1/7/2013')
+    period(lower_date='1/7/2013', higher_date='3/7/2013')

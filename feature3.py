@@ -1,9 +1,10 @@
 ##feature3
 import sqlite3
 from tabulate import tabulate
+#import tabulate as tabulate
 
 def keyword_Selection(var1, var2, var3):
-    connection = sqlite3.connect("Crashdb.db")
+    connection = sqlite3.connect("data/crashdb.db")
     list_column=[]
     list_values=[]
 
