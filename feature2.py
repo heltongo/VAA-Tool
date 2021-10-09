@@ -10,11 +10,15 @@ import sys
 
 import sqlite3
 import matplotlib.pyplot as plt
+
+
+# def hour_Selection(var1, var2):
 connection = sqlite3.connect("data/crashdb.db")
 cursor = connection.cursor()
 string = "SELECT cast(ACCIDENT_TIME as int) AS 'HOUR',COUNT(*) AS 'COUNT' FROM CrashStatisticsVictoria GROUP BY HOUR"
-    # string="SELECT sum(cast(price as INT)) from listings_dec18 "
-    # query=string.format(first=var1,second=var2)
+# string="SELECT sum(cast(price as INT)) from listings_dec18 "
+# query=string.format(first=var1,second=var2)
+# cursor.execute(string, {"Start_hour": var1, "End_hour": var2})
 cursor.execute(string)
 result = cursor.fetchall()
 list1 = []
@@ -35,8 +39,10 @@ class CanvasPanel(wx.Panel):
         self.sizer.Add(self.canvas, 1, wx.LEFT | wx.TOP | wx.GROW)
         self.SetSizer(self.sizer)
         self.Fit()
+
+
     def draw(self):
-        #plot_ditribution()
+            #plot_ditribution()
 
         plt.figure(figsize=(8, 5))
         plt.xlabel('Hours')
@@ -45,13 +51,14 @@ class CanvasPanel(wx.Panel):
         plt.title('Hourly Analysis of Accidents')
         plt.plot(list1, list2)
         plt.show()
-        
+
 
 
 if __name__ == "__main__":
     app = wx.PySimpleApp()
     fr = wx.Frame(None, title='test')
     panel = CanvasPanel(fr)
+    # ////
     panel.draw()
     fr.Show()
     app.MainLoop()

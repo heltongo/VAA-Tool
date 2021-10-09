@@ -24,23 +24,25 @@ class MainWindow(wx.Frame):
         font = font.Bold()
         vaaText.SetFont(font)
 
-        joinText = wx.StaticText(pnl, pos = (120,30), label="Home")
+        joinText = wx.StaticText(pnl, pos = (110,75), label="Home")
         font = joinText.GetFont()
-        font.PointSize += 10
+        font.PointSize += 5
         joinText.SetFont(font)
 
         png = wx.Image('logo.png', wx.BITMAP_TYPE_ANY).ConvertToBitmap()
         wx.StaticBitmap(self, -1, png, (10,5), (png.GetWidth(), png.GetHeight()))
 
-        periodButton = wx.Button(pnl, pos=(10, 110), label="Period Analysis")
+        timeButton = wx.Button(pnl, pos=(10, 110), label="Time Analysis                         ")
 
-        hourButton = wx.Button(pnl, pos=(10, 140), label="Hour Analysis")
+        self.hourlyButton = wx.Button(pnl, pos=(10, 140), label="Hourly Accident Analysis      ")
+        # self.hourlyButton.Bind(wx.EVT_BUTTON, self.hourButton)
 
-        keywordButton = wx.Button(pnl, pos=(10, 170), label="Keyword Analysis")
+        keywordButton = wx.Button(pnl, pos=(10, 170), label="Accident by type Analysis     ")
 
-        alcoholButton = wx.Button(pnl, pos=(10, 200), label="Alcohol Impact Analysis")
+        alcoholButton = wx.Button(pnl, pos=(10, 200), label="Alcohol Impact Analysis         ")
 
-        geographicButton = wx.Button(pnl, pos=(10, 230), label="Geographic Impact Analysis")
+        geographicButton = wx.Button(pnl, pos=(10, 230), label="Geographic Impact Analysis  ")
+
 
 
 
@@ -67,21 +69,27 @@ class MainWindow(wx.Frame):
         self.keyword = wx.TextCtrl(self, pos=(400, 140), size=(105, 30))
 
         self.submitButton = wx.Button(self, pos=(400, 300), label="Submit")
-        self.submitButton.Bind(wx.EVT_BUTTON, self.OnSend)
+        self.submitButton.Bind(wx.EVT_BUTTON, self.SubmitButton)
 
-    def OnSend(self, event):
-        val1 = self.dateFrom.GetValue()
-        val2 = self.dateTo.GetValue()
+
+    def SubmitButton(self, event):
+        fromDate = self.dateFrom.GetValue()
+        toDate = self.dateTo.GetValue()
         key = self.keyword.GetValue()
-        keyword = keyword_Selection(val1,val2,key)
-        print(keyword)
-        self.frame.Show()
+        keyword = keyword_Selection(fromDate, toDate, key)
+        print(fromDate)
+        print(toDate)
+        print(key)
+        print("Submit button clicked")
+
+    # def OnClick(self, event):
+    #     panels = self.panel.Show(self.panel)
+    #     print(panels)
 
 
 
-
-
-app = wx.App(False)
+app = wx.App(redirect=True)
 frame = MainWindow(None, "VAA Tool")
+frame.Show()
 app.MainLoop()
 

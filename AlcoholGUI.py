@@ -23,23 +23,25 @@ class MainWindow(wx.Frame):
         font = font.Bold()
         vaaText.SetFont(font)
 
-        joinText = wx.StaticText(pnl, pos = (120,30), label="Home")
+        joinText = wx.StaticText(pnl, pos = (110,75), label="Home")
         font = joinText.GetFont()
-        font.PointSize += 10
+        font.PointSize += 5
         joinText.SetFont(font)
 
         png = wx.Image('logo.png', wx.BITMAP_TYPE_ANY).ConvertToBitmap()
         wx.StaticBitmap(self, -1, png, (10,5), (png.GetWidth(), png.GetHeight()))
 
-        periodButton = wx.Button(pnl, pos=(10, 110), label="Period Analysis")
+        timeButton = wx.Button(pnl, pos=(10, 110), label="Time Analysis                         ")
 
-        hourButton = wx.Button(pnl, pos=(10, 140), label="Hour Analysis")
+        self.hourlyButton = wx.Button(pnl, pos=(10, 140), label="Hourly Accident Analysis      ")
+        # self.hourlyButton.Bind(wx.EVT_BUTTON, self.hourButton)
 
-        keywordButton = wx.Button(pnl, pos=(10, 170), label="Keyword Analysis")
+        keywordButton = wx.Button(pnl, pos=(10, 170), label="Accident by type Analysis     ")
 
-        alcoholButton = wx.Button(pnl, pos=(10, 200), label="Alcohol Impact Analysis")
+        alcoholButton = wx.Button(pnl, pos=(10, 200), label="Alcohol Impact Analysis         ")
 
-        geographicButton = wx.Button(pnl, pos=(10, 230), label="Geographic Impact Analysis")
+        geographicButton = wx.Button(pnl, pos=(10, 230), label="Geographic Impact Analysis  ")
+
 
         self.annualButton = wx.Button(self, pos=(280, 80), label="Alcohol Impact Analysis - Annual Report", size = (300,50))
         self.annualButton.Bind(wx.EVT_BUTTON, self.OnSend)
@@ -84,7 +86,7 @@ class MainWindow(wx.Frame):
     #     self.Refresh()
     #     self.Layout()
 
-app = wx.App(False)
+app = wx.App(redirect=True)
 frame = MainWindow(None, "VAA Tool")
+frame.Show()
 app.MainLoop()
-
