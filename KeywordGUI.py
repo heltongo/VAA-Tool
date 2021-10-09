@@ -5,6 +5,7 @@ from matplotlib.backends.backend_wxagg import FigureCanvasWxAgg as FigureCanvas
 from matplotlib.backends.backend_wx import NavigationToolbar2Wx
 from matplotlib.figure import Figure
 import wx
+from feature3 import *
 
 class MainWindow(wx.Frame):
     def __init__(self, parent, title):
@@ -69,40 +70,16 @@ class MainWindow(wx.Frame):
         self.submitButton.Bind(wx.EVT_BUTTON, self.OnSend)
 
     def OnSend(self, event):
-        val1 = self.dateFromText.GetValue()
-        val2 = self.dateToText.GetValue()
-        print(val1)
-
-        # dateFromText = wx.StaticText(pnl, pos=(280, 110), label="Date From:")
-        # font = dateFromText.GetFont()
-        # font.PointSize += 10
-        # dateFromText.SetFont(font)
-        #
-        # dateFrom = wx.TextCtrl(pnl, pos=(400, 110), size=(105, 30))
-        #
-        #
-        # dateToText = wx.StaticText(pnl, pos=(280, 80), label="Date To:")
-        # font = dateToText.GetFont()
-        # font.PointSize += 10
-        # dateToText.SetFont(font)
-        #
-        # dateTo = wx.TextCtrl(pnl, pos=(400, 80), size=(105, 30))
-
-        # submitButton = wx.Button(pnl, pos=(400, 300), label="Submit")
-        # submitButton.Bind(wx.EVT_BUTTON, pnl.OnSend)
+        val1 = self.dateFrom.GetValue()
+        val2 = self.dateTo.GetValue()
+        key = self.keyword.GetValue()
+        keyword = keyword_Selection(val1,val2,key)
+        print(keyword)
+        self.frame.Show()
 
 
 
 
-    # def onResize(self, event):
-    #     # self.Layout()
-    #     frame_size = self.GetSize()
-    #     frame_h = (frame_size[0]-10) / 2
-    #     frame_w = (frame_size[1]-10) / 2
-    #     png = self.png.Scale(frame_h,frame_w)
-    #     self.m_bitmap3.SetBitmap(wx.BitmapFromImage(png))
-    #     self.Refresh()
-    #     self.Layout()
 
 app = wx.App(False)
 frame = MainWindow(None, "VAA Tool")

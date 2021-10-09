@@ -5,10 +5,9 @@ from tabulate import tabulate
 def date_Selection(var1, var2):
     list_column=[]
     list_values=[]
-    connection = sqlite3.connect("data/crashdb.db")
+    connection = sqlite3.connect("Crashdb.db")
     cursor = connection.cursor()
-    string = "SELECT * from CrashStatisticsVictoria where ACCIDENT_DATE>=:Start_date and ACCIDENT_DATE<=:End_date\
-                ORDER BY ACCIDENT_DATE, ACCIDENT_TIME"
+    string = "SELECT * from CrashStatisticsVictoria where ACCIDENT_DATE>=:Start_date and ACCIDENT_DATE<=:End_date"
     string1 = "PRAGMA TABLE_INFO(CrashStatisticsVictoria)"
     cursor.execute(string, {"Start_date": var1, "End_date": var2})
     result = cursor.fetchall()
@@ -27,4 +26,4 @@ def date_Selection(var1, var2):
     connection.close()
 
 
-date_Selection('2017-07-01','2017-08-01')
+date_Selection('1/7/2017','1/7/2019')
