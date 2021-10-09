@@ -7,8 +7,8 @@ from matplotlib.figure import Figure
 import wx
 import sqlite3
 from feature1 import *
-from feature2 import *
-from feature3 import *
+from HourGUI import MainWindows
+
 
 
 
@@ -52,24 +52,24 @@ class MainWindow(wx.Frame):
         font = font.Bold()
         vaaText.SetFont(font)
 
-        joinText = wx.StaticText(pnl, pos = (120,30), label="Home")
+        joinText = wx.StaticText(pnl, pos = (110,75), label="Home")
         font = joinText.GetFont()
-        font.PointSize += 10
+        font.PointSize += 5
         joinText.SetFont(font)
 
         png = wx.Image('logo.png', wx.BITMAP_TYPE_ANY).ConvertToBitmap()
         wx.StaticBitmap(self, -1, png, (10,5), (png.GetWidth(), png.GetHeight()))
 
-        timeButton = wx.Button(pnl, pos=(10, 110), label="Time Analysis")
+        timeButton = wx.Button(pnl, pos=(10, 110), label="Time Analysis                         ")
 
-        self.hourlyButton = wx.Button(pnl, pos=(10, 140), label="Hourly Accident Analysis")
+        self.hourlyButton = wx.Button(pnl, pos=(10, 140), label="Hourly Accident Analysis      ")
         self.hourlyButton.Bind(wx.EVT_BUTTON, self.hourButton)
 
-        keywordButton = wx.Button(pnl, pos=(10, 170), label="Accident by type Analysis")
+        keywordButton = wx.Button(pnl, pos=(10, 170), label="Accident by type Analysis     ")
 
-        alcoholButton = wx.Button(pnl, pos=(10, 200), label="Alcohol Impact Analysis")
+        alcoholButton = wx.Button(pnl, pos=(10, 200), label="Alcohol Impact Analysis         ")
 
-        geographicButton = wx.Button(pnl, pos=(10, 230), label="Geographic Impact Analysis")
+        geographicButton = wx.Button(pnl, pos=(10, 230), label="Geographic Impact Analysis  ")
 
 
 
@@ -101,13 +101,14 @@ class MainWindow(wx.Frame):
         print(toDate)
         print("Submit button clicked")
 
-    def OnClick(self, event):
-        panels = self.panel.Show(self.panel)
-        print(panels)
-
+    # def OnClick(self, event):
+    #     panels = self.panel.Show(self.panel)
+    #     print(panels)
+    # this code shows the hour window from the back
     def hourButton(self, event):
-        self.frame.Show()
-        self.Hide()
+        windows = MainWindows
+        self.frame.Show(windows)
+        # self.Hide()
 
 
 app = wx.App(redirect=True)

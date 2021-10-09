@@ -27,5 +27,5 @@ def keyword_Selection(var1, var2, var3):
     print(tabulate(list_values,headers=list_column))
     connection.close()
 
-keyword_Selection('1/7/2017','1/7/2019','animal')
+keyword_Selection('var1', 'var2', 'var3')
 

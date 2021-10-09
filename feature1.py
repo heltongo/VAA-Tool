@@ -25,5 +25,5 @@ def date_Selection(var1, var2):
     print(tabulate(list_values,headers=list_column))
     connection.close()
 
-
-date_Selection('1/7/2017','1/7/2019')
+date_Selection("var1", "var2")
+# date_Selection('1/7/2017','1/7/2019')
