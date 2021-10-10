@@ -1,39 +1,62 @@
 #feature 4
 import sqlite3
+import matplotlib.pyplot as plt
 from tabulate import tabulate
 from data.db_utils import *
+import pandas as pd
 
-def alcohol_Analysis():
-    QUERY = "SELECT * from CrashStatisticsVictoria \
-                WHERE ACCIDENT_DATE BETWEEN '2014-01-01' AND '2018-12-31' AND ALCOHOLTIME='Yes'\
-                ORDER BY ACCIDENT_DATE, ACCIDENT_TIME"
+def alcoholAccidents():
+    labels = []
+    sizes = []
+    var1 = '2014-01-01'
+    var2 = '2018-12-31'
 
-    result = sql_data_to_list_of_dicts("data/crashdb.db", QUERY)
+    connection = sqlite3.connect("data/crashdb.db")
+    cursor = connection.cursor()
+    string = "SELECT SEVERITY,COUNT(*) AS 'COUNT' FROM CrashStatisticsVictoria\
+                   WHERE ALCOHOLTIME='Ýes' AND ACCIDENT_DATE>=:Start_date AND ACCIDENT_DATE<=:End_date \
+                   GROUP BY SEVERITY"
+    cursor.execute(string, {"Start_date": var1, "End_date": var2})
+    result = cursor.fetchall()
 
-    print(result)
+    for r in result:
+        labels.append(r[0])
+        sizes.append(r[1])
+    # Plot
+    fig, ax1 = plt.subplots()
+    ax1.pie(sizes, explode=(0, 0.1, 0, 0), labels=labels, autopct='%1.1f%%', shadow=True, startangle=90)
+    ax1.axis('equal')
+    plt.show()
 
-    #print("Total records: ",count_keys(result))
-    #print("First record date: ",result[0].get('ACCIDENT_DATE'))
-    #print("Last record date: ",result[24530].get('ACCIDENT_DATE'))
-
-#Finally :D
 
 
-# STOP
-'''
-#def calculate_alcohol(records):
-    type_alcohol = calculate_type(lower_date=lower_date, higher_date=higher_date, crash_type='alcohol')
+def alcoholMonthlyAcc():
+    list1 = []
+    list2 = []
+    var1 = '2014-01-01'
+    var2 = '2018-12-31'
 
-    for data in type_alcohol:
-        records = {
-            "gender": data['gender'],
-            "year": data['gender'],
-            "time": data['gender'],
-            "Age": data['gender'],
-            "Vehicle_Type": data['gender'],
-            "road_type": data['gender'],
-        }
-'''
+    connection = sqlite3.connect("data/crashdb.db")
+    cursor = connection.cursor()
+    string = "SELECT STRFTIME('%m', date(ACCIDENT_DATE)) AS MONTH_YEAR,COUNT(*) AS 'COUNT' FROM CrashStatisticsVictoria\
+                WHERE ALCOHOLTIME='Yes' AND ACCIDENT_DATE between '2017-07-01' AND '2018-07-01' GROUP BY STRFTIME('%m', date(ACCIDENT_DATE)) "
+    cursor.execute(string)
+    result = cursor.fetchall()
+
+    for r in result:
+        list1.append(r[0])
+        list2.append(r[1])
+
+    plt.figure(figsize=(8, 5))
+    plt.xlabel('Months of the year')
+    plt.xticks(range(0, 12))
+    plt.ylabel('Number of accidents')
+    plt.title('Alcohol Analysis of Accidents')
+    plt.plot(list1, list2)
+    plt.show()
+
+
 if __name__ == "__main__":
-    alcohol_Analysis()
+    #alcoholMonthlyAcc()
+    alcoholAccidents()
     exit()
