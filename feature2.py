@@ -12,21 +12,33 @@ import sqlite3
 import matplotlib.pyplot as plt
 
 
-# def hour_Selection(var1, var2):
-connection = sqlite3.connect("data/crashdb.db")
-cursor = connection.cursor()
-string = "SELECT cast(ACCIDENT_TIME as int) AS 'HOUR',COUNT(*) AS 'COUNT' FROM CrashStatisticsVictoria GROUP BY HOUR"
-# string="SELECT sum(cast(price as INT)) from listings_dec18 "
-# query=string.format(first=var1,second=var2)
-# cursor.execute(string, {"Start_hour": var1, "End_hour": var2})
-cursor.execute(string)
-result = cursor.fetchall()
-list1 = []
-list2 = []
-for r in result:
-    list1.append(r[0])
-    list2.append(r[1])
-connection.close()
+def hour_Selection(var1,var2):
+    list1 = []
+    list2 = []
+    #var1 = '2014-01-01'
+    #var2 ='2018-12-31'
+
+    connection = sqlite3.connect("data/crashdb.db")
+    cursor = connection.cursor()
+    connection = sqlite3.connect("data/crashdb.db")
+    cursor = connection.cursor()
+    string = "SELECT cast(ACCIDENT_TIME as int) AS 'HOUR',COUNT(*) AS 'COUNT' FROM CrashStatisticsVictoria\
+                WHERE ACCIDENT_DATE>=:Start_date and ACCIDENT_DATE<=:End_date\
+                GROUP BY HOUR"
+    cursor.execute(string, {"Start_date": var1, "End_date": var2})
+    result = cursor.fetchall()
+
+    for r in result:
+        list1.append(r[0])
+        list2.append(r[1])
+
+    plt.figure(figsize=(8, 5))
+    plt.xlabel('Hours')
+    plt.xticks(range(1, 24))
+    plt.ylabel('Number of accidents')
+    plt.title('Hourly Analysis of Accidents')
+    plt.plot(list1, list2)
+    plt.show()
 
 
 class CanvasPanel(wx.Panel):
@@ -41,24 +53,13 @@ class CanvasPanel(wx.Panel):
         self.Fit()
 
 
-    def draw(self):
-            #plot_ditribution()
-
-        plt.figure(figsize=(8, 5))
-        plt.xlabel('Hours')
-        plt.xticks(range(1,24))
-        plt.ylabel('Number of accidents')
-        plt.title('Hourly Analysis of Accidents')
-        plt.plot(list1, list2)
-        plt.show()
-
-
-
 if __name__ == "__main__":
-    app = wx.PySimpleApp()
+    pp = wx.PySimpleApp()
     fr = wx.Frame(None, title='test')
     panel = CanvasPanel(fr)
     # ////
-    panel.draw()
+
+    x = hour_Selection('2014-01-01','2018-12-31')
     fr.Show()
     app.MainLoop()
+
