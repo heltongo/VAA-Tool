@@ -26,4 +26,5 @@ def date_Selection(var1, var2):
     connection.close()
 
 date_Selection("var1", "var2")
-# date_Selection('1/7/2017','1/7/2019')
+# date_Selection('1/7/2016','1/7/2017')
+# date_Selection('2016-07-01','2017-07-01')
