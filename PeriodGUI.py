@@ -7,7 +7,8 @@ from matplotlib.figure import Figure
 import wx
 import sqlite3
 from feature1 import *
-from HourGUI import MainWindows
+from tabulate import tabulate
+# from HourGUI import MainWindows
 
 
 
