@@ -16,7 +16,7 @@ def hour_Selection(var1,var2):
     list1 = []
     list2 = []
     #var1 = '2014-01-01'
-    #var2 ='2018-12-31'
+    #var2 ='2018-12-31' a
 
     connection = sqlite3.connect("data/crashdb.db")
     cursor = connection.cursor()
